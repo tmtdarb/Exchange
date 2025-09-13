@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exchange.Infrastructure", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exchange.Application", "Exchange.Application\Exchange.Application.csproj", "{320076ED-8F81-44E2-89F1-AE3D8AD06AF2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exchange.Domain", "Exchange.Domain\Exchange.Domain.csproj", "{1F8E04E2-BDFE-42E2-8234-7931E0824371}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{320076ED-8F81-44E2-89F1-AE3D8AD06AF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{320076ED-8F81-44E2-89F1-AE3D8AD06AF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{320076ED-8F81-44E2-89F1-AE3D8AD06AF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F8E04E2-BDFE-42E2-8234-7931E0824371}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F8E04E2-BDFE-42E2-8234-7931E0824371}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F8E04E2-BDFE-42E2-8234-7931E0824371}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F8E04E2-BDFE-42E2-8234-7931E0824371}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
