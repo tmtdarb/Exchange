@@ -1,7 +1,11 @@
+using Exchange.Application.CQRS;
+using Exchange.Application.Mapping;
 using Exchange.Domain.Interfaces;
 using Exchange.Infrastructure.EF;
 using Exchange.Infrastructure.Repositories;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +20,12 @@ builder.Services.AddDbContext<ExchangeDbContext>(options => options.UseSqlServer
 builder.Services.AddScoped<ICurrencyRepository,CurrencyRepository>();
 builder.Services.AddScoped<IExchangeRatesRepository, ExchangeRatesRepository>();
 builder.Services.AddScoped<IConversionsRepository, ConversionRepository>();
+// MediatR
+builder.Services.AddMediatR(cfg =>
+    cfg.RegisterServicesFromAssembly(typeof(Exchange.Application.AssemblyReference).Assembly));
+
+// AutoMapper
+builder.Services.AddAutoMapper(cfg => { }, typeof(MappingProfile).Assembly);
 
 var app = builder.Build();
 

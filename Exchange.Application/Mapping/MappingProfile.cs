@@ -1,0 +1,26 @@
+﻿using AutoMapper;
+using Exchange.Application.DTO;
+using Exchange.Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Exchange.Application.Mapping
+{
+    public class MappingProfile : Profile
+    {
+        public MappingProfile()
+        {
+            CreateMap<CurrencyModel, Currency>().ForMember(a=>a.ID,opt=>opt.Ignore());
+            CreateMap<Currency, CurrencyModel>();
+
+            CreateMap<ExchangeRateModel, ExchangeRate>();
+            CreateMap<ExchangeRate, ExchangeRateModel>();
+
+            CreateMap<ConversionModel, Conversion>();
+            CreateMap<Conversion, ConversionModel>();
+        }
+    }
+}
