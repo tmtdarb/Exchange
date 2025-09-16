@@ -22,28 +22,21 @@ namespace Exchange.Api.Controllers
             _currencyRepository = currencyRepository;
             _mediator = mediator;
         }
-        // GET: api/<CurrencyController>
+        // get all active currencies
         [HttpGet]
         public async Task<List<CurrencyModel>> Get()
         {
             return await _mediator.Send(new GetAllActiveCurenciesQuery());
         }
 
-        // GET api/<CurrencyController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<CurrencyController>
+        // create new currency
         [HttpPost]
         public async Task Post([FromBody] CurrencyModel model)
         {
             await _mediator.Send(new CreateCurrencyCommand(model));
         }
 
-        // PUT api/<CurrencyController>/5
+        // edit existing currency
         [HttpPut("{id}")]
         public async Task Put(int id, [FromBody] CurrencyModel model)
         {
@@ -51,10 +44,11 @@ namespace Exchange.Api.Controllers
             await _mediator.Send(new UpdateCurrencyCommand(model));
         }
 
-        // DELETE api/<CurrencyController>/5
+        // delete command
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
+            await _mediator.Send(new DeleteCurrencyCommand(id));
         }
     }
 }
