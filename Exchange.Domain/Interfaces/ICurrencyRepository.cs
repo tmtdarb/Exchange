@@ -11,6 +11,7 @@ namespace Exchange.Domain.Interfaces
     {
         Task<List<Currency>> GetAllActiveCurrencies();
         Task<Currency> GetCurrencyById(int id);
+        Task<Currency> GetCurrencyByCode(string code);
         Task CreateCurrency(Currency currency);
         Task UpdateCurrency(Currency currency);
         Task SaveChangesAsync();

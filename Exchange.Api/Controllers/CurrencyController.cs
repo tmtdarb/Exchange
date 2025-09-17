@@ -1,6 +1,7 @@
 ﻿using Exchange.Application.CQRS.Currencies.Commands;
 using Exchange.Application.CQRS.Currencies.Queries;
 using Exchange.Application.DTO;
+using Exchange.Application.Responses;
 using Exchange.Domain.Entities;
 using Exchange.Domain.Interfaces;
 using MediatR;
@@ -31,24 +32,27 @@ namespace Exchange.Api.Controllers
 
         // create new currency
         [HttpPost]
-        public async Task Post([FromBody] CurrencyModel model)
+        public async Task<IActionResult> Post([FromBody] CreateCurrencyModel model)
         {
-            await _mediator.Send(new CreateCurrencyCommand(model));
+            var result = await _mediator.Send(new CreateCurrencyCommand(model));
+            return Ok(ApiResponse<CurrencyModel>.SuccessResponse(result, "ვალუტა წარმატებით შეიქმნა!"));
+
         }
 
         // edit existing currency
         [HttpPut("{id}")]
-        public async Task Put(int id, [FromBody] CurrencyModel model)
+        public async Task<IActionResult> Put(int id, [FromBody] CreateCurrencyModel model)
         {
-            model.ID = id;
-            await _mediator.Send(new UpdateCurrencyCommand(model));
+            var result = await _mediator.Send(new UpdateCurrencyCommand(model, id));
+            return Ok(ApiResponse<CurrencyModel>.SuccessResponse(result, "ვალუტა წარმატებით განახლდა"));
         }
 
         // delete command
         [HttpDelete("{id}")]
-        public async Task Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
             await _mediator.Send(new DeleteCurrencyCommand(id));
+            return Ok(ApiResponse<bool>.SuccessResponse(true, "ვალუტა წარმატებით წაიშალა"));
         }
     }
 }

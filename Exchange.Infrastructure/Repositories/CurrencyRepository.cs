@@ -27,6 +27,11 @@ namespace Exchange.Infrastructure.Repositories
             var currency = await _db.Currencies.FirstOrDefaultAsync(a => a.ID == id);
             return currency;
         }
+        public async Task<Currency> GetCurrencyByCode(string code)
+        {
+            var currency = await _db.Currencies.FirstOrDefaultAsync(a => a.CurrencyCode.ToUpper() == code.ToUpper());
+            return currency;
+        }
         public async Task CreateCurrency(Currency currency)
         {
             _db.Currencies.AddAsync(currency);

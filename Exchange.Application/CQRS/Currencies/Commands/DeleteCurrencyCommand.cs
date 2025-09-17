@@ -19,6 +19,8 @@ namespace Exchange.Application.CQRS.Currencies.Commands
         public async Task<Unit> Handle(DeleteCurrencyCommand request, CancellationToken cancellationToken)
         {
             var currToDelete = await _repo.GetCurrencyById(request.id);
+            if (currToDelete == null)
+                throw new InvalidOperationException("ვალუტა ამ კოდით ვერ მოიძებნა");
             currToDelete.IsActive = false;
             await _repo.UpdateCurrency(currToDelete);
             await _repo.SaveChangesAsync();

@@ -1,3 +1,4 @@
+using Exchange.Api.Middleware;
 using Exchange.Application.CQRS;
 using Exchange.Application.Mapping;
 using Exchange.Domain.Interfaces;
@@ -35,6 +36,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseHttpsRedirection();
 

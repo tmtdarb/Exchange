@@ -16,6 +16,9 @@ namespace Exchange.Application.Mapping
             CreateMap<CurrencyModel, Currency>().ForMember(a=>a.ID,opt=>opt.Ignore());
             CreateMap<Currency, CurrencyModel>();
 
+            CreateMap<CreateCurrencyModel, Currency>().ForMember(a => a.ID, opt => opt.Ignore());
+            CreateMap<Currency, CreateCurrencyModel>();
+
             CreateMap<ExchangeRateModel, ExchangeRate>();
             CreateMap<ExchangeRate, ExchangeRateModel>();
 

@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace Exchange.Application.DTO
 {
-    public class CurrencyModel
+    public class CreateCurrencyModel
     {
-        public int ID { get; set; }
         public string CurrencyCode { get; set; }
         public string CurrencyName { get; set; }
         public string CurrencyNameEn { get; set; }
         public int OrderNumber { get; set; }
-        public bool IsActive { get; set; }
     }
 }
