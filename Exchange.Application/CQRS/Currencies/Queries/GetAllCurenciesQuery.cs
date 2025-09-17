@@ -23,6 +23,9 @@ namespace Exchange.Application.CQRS.Currencies.Queries
         public async Task<List<CurrencyModel>> Handle(GetAllActiveCurenciesQuery request, CancellationToken cancellationToken)
         {
             var activeCurrencies = await _repository.GetAllActiveCurrencies();
+            if (activeCurrencies == null)
+                throw new InvalidOperationException("აქტიური ვალუტები არ მოიძებნა");
+
             return _mapper.Map<List<CurrencyModel>>(activeCurrencies);
         }
     }

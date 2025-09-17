@@ -25,9 +25,10 @@ namespace Exchange.Api.Controllers
         }
         // get all active currencies
         [HttpGet]
-        public async Task<List<CurrencyModel>> Get()
+        public async Task<IActionResult> Get()
         {
-            return await _mediator.Send(new GetAllActiveCurenciesQuery());
+            var result = await _mediator.Send(new GetAllActiveCurenciesQuery());
+            return Ok(ApiResponse<List<CurrencyModel>>.SuccessResponse(result, "ვალუტები წარმატებით დაბრუნდა"));
         }
 
         // create new currency
