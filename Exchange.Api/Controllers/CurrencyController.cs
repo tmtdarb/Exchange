@@ -16,11 +16,9 @@ namespace Exchange.Api.Controllers
     [ApiController]
     public class CurrencyController : ControllerBase
     {
-        private readonly ICurrencyRepository _currencyRepository;
         private readonly IMediator _mediator;
-        public CurrencyController(ICurrencyRepository currencyRepository, IMediator mediator)
+        public CurrencyController(IMediator mediator)
         {
-            _currencyRepository = currencyRepository;
             _mediator = mediator;
         }
         // get all active currencies

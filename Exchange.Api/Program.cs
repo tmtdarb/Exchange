@@ -22,8 +22,7 @@ builder.Services.AddScoped<ICurrencyRepository,CurrencyRepository>();
 builder.Services.AddScoped<IExchangeRatesRepository, ExchangeRatesRepository>();
 builder.Services.AddScoped<IConversionsRepository, ConversionRepository>();
 // MediatR
-builder.Services.AddMediatR(cfg =>
-    cfg.RegisterServicesFromAssembly(typeof(Exchange.Application.AssemblyReference).Assembly));
+builder.Services.AddMediatR(typeof(Exchange.Application.AssemblyReference).Assembly);
 
 // AutoMapper
 builder.Services.AddAutoMapper(cfg => { }, typeof(MappingProfile).Assembly);

@@ -19,7 +19,7 @@ namespace Exchange.Application.Mapping
             CreateMap<CreateCurrencyModel, Currency>().ForMember(a => a.ID, opt => opt.Ignore());
             CreateMap<Currency, CreateCurrencyModel>();
 
-            CreateMap<ExchangeRateModel, ExchangeRate>();
+            CreateMap<CreateExchangeRateModel, ExchangeRate>();
             CreateMap<ExchangeRate, ExchangeRateModel>();
 
             CreateMap<ConversionModel, Conversion>();
