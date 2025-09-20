@@ -18,7 +18,7 @@ namespace Exchange.Application.CQRS.ExchangeRates.Commands
         }
         public async Task<Unit> Handle(DeleteExchangeRateCommand request, CancellationToken cancellationToken)
         {
-            var er = await _repository.GetExchangeRateByCurrencyId(request.id);
+            var er = await _repository.GetExchangeRateById(request.id);
             if (er == null)
                 throw new InvalidOperationException("ვალუტის კურსი ასეთი აიდით ვერ მოიძებნა");
             await _repository.DeleteExchangeRateById(request.id);

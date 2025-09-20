@@ -31,6 +31,7 @@ namespace Exchange.Application.CQRS.Currencies.Commands
                 throw new InvalidOperationException("ვალუტა ამ კოდით უკვე არსებობს!");
 
             var model = _mapper.Map<Currency>(request.model);
+            model.IsActive = true;
             await _currencyRepository.CreateCurrency(model);
             await _currencyRepository.SaveChangesAsync();
             return _mapper.Map<CurrencyModel>(model);

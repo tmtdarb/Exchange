@@ -1,6 +1,8 @@
 using Exchange.Api.Middleware;
 using Exchange.Application.CQRS;
+using Exchange.Application.Interfaces;
 using Exchange.Application.Mapping;
+using Exchange.Application.Services;
 using Exchange.Domain.Interfaces;
 using Exchange.Infrastructure.EF;
 using Exchange.Infrastructure.Repositories;
@@ -21,6 +23,7 @@ builder.Services.AddDbContext<ExchangeDbContext>(options => options.UseSqlServer
 builder.Services.AddScoped<ICurrencyRepository,CurrencyRepository>();
 builder.Services.AddScoped<IExchangeRatesRepository, ExchangeRatesRepository>();
 builder.Services.AddScoped<IConversionsRepository, ConversionRepository>();
+builder.Services.AddScoped<ICalculatorService, CalculatorService>();
 // MediatR
 builder.Services.AddMediatR(typeof(Exchange.Application.AssemblyReference).Assembly);
 

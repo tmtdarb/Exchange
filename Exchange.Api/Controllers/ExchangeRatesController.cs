@@ -56,7 +56,7 @@ namespace Exchange.Api.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             await _mediator.Send(new DeleteExchangeRateCommand(id));
-            return Ok(ApiResponse<bool>.SuccessResponse(true, "ვალუტის კურსი წარმატებით შეიცვალა"));
+            return Ok(ApiResponse<bool>.SuccessResponse(true, "ვალუტის კურსი წარმატებით წაიშალა"));
         }
     }
 }

@@ -1,5 +1,7 @@
-﻿using Exchange.Domain.Interfaces;
+﻿using Exchange.Domain.Entities;
+using Exchange.Domain.Interfaces;
 using Exchange.Infrastructure.EF;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +16,24 @@ namespace Exchange.Infrastructure.Repositories
         public ConversionRepository(ExchangeDbContext db)
         {
             _db = db;
+        }
+        public async Task AddConversion(Conversion model)
+        {
+            await _db.Conversions.AddAsync(model);
+        }
+        public async Task<List<Conversion>> GetAllConversions()
+        {
+            var result = await _db.Conversions.Include(a => a.SoldCurrency).Include(a => a.RecievedCurrency).ToListAsync();
+            return result;
+        }
+        public async Task<Conversion> GetConversionByID(int id)
+        {
+            var result = await _db.Conversions.Include(a=>a.SoldCurrency).Include(a=>a.RecievedCurrency).FirstOrDefaultAsync(a=>a.ID == id);
+            return result;
+        }
+        public async Task SaveChanges()
+        {
+            await _db.SaveChangesAsync();
         }
     }
 }

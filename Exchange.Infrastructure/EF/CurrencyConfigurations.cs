@@ -19,7 +19,7 @@ namespace Exchange.Infrastructure.EF
             builder.Property(a=>a.CurrencyName).IsRequired().HasMaxLength(30);
             builder.Property(a=>a.CurrencyNameEn).IsRequired().HasMaxLength(30);
             builder.Property(a => a.OrderNumber).IsRequired();
-            builder.HasIndex(a => a.CurrencyCode).IsUnique();
+            //builder.HasIndex(a => a.CurrencyCode).IsUnique();
             builder.HasIndex(a => a.OrderNumber);
             builder.Property(a=>a.IsActive).HasDefaultValue(true);
         }

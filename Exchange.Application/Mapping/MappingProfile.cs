@@ -22,7 +22,7 @@ namespace Exchange.Application.Mapping
             CreateMap<CreateExchangeRateModel, ExchangeRate>();
             CreateMap<ExchangeRate, ExchangeRateModel>();
 
-            CreateMap<ConversionModel, Conversion>();
+            CreateMap<CreateConversionModel, Conversion>().ForMember(a => a.ID, opt => opt.Ignore());
             CreateMap<Conversion, ConversionModel>();
         }
     }
