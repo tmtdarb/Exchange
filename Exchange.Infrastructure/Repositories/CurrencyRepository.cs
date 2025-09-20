@@ -19,7 +19,7 @@ namespace Exchange.Infrastructure.Repositories
         }
         public async Task<List<Currency>> GetAllActiveCurrencies()
         {
-            var activeCurrencies = await _db.Currencies.Where(a => a.IsActive).ToListAsync();
+            var activeCurrencies = await _db.Currencies.Where(a => a.IsActive).OrderBy(a=>a.OrderNumber).ToListAsync();
             return activeCurrencies;
         }
         public async Task<Currency> GetCurrencyById(int id)
