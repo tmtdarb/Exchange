@@ -17,11 +17,17 @@ namespace Exchange.Api.Controllers
         {
             _mediator = mediator;
         }
-        [HttpGet]
-        public async Task<IActionResult> Get(DateTime from,DateTime to)
+        [HttpGet("Conversions")]
+        public async Task<IActionResult> GetConversions(DateTime from,DateTime to)
         {
             var result = await _mediator.Send(new GetConversionsByDateQuery(from, to));
             return Ok(ApiResponse<List<ConversionModel>>.SuccessResponse(result, "კონვერტაციები მოცემულ თარიღში წარმატებით დაბრუნდა"));
+        }
+        [HttpGet("SuspiciousConversions")]
+        public async Task<IActionResult> GetSuspiciousConversions(DateTime from, DateTime to)
+        {
+            var result = await _mediator.Send(new GetSuspiciousConversionsByDateQuery(from, to));
+            return Ok(ApiResponse<List<ConversionModel>>.SuccessResponse(result, "საეჭვო კონვერტაციები მოცემულ თარიღში წარმატებით დაბრუნდა"));
         }
     }
 }

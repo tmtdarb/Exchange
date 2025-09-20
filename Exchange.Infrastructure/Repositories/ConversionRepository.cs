@@ -31,6 +31,11 @@ namespace Exchange.Infrastructure.Repositories
             var result = await _db.Conversions.Where(a=>a.ConversionDate>=from && a.ConversionDate<=to).Include(a => a.SoldCurrency).Include(a => a.RecievedCurrency).ToListAsync();
             return result;
         }
+        public async Task<List<Conversion>> GetAllSuspiciousConversions(DateTime from, DateTime to)
+        {
+            var result = await _db.Conversions.Where(a=>a.AmountToSellInGel>3000 && a.ConversionDate >= from && a.ConversionDate <= to).Include(a => a.SoldCurrency).Include(a => a.RecievedCurrency).ToListAsync();
+            return result;
+        }
         public async Task<Conversion> GetConversionByID(int id)
         {
             var result = await _db.Conversions.Include(a=>a.SoldCurrency).Include(a=>a.RecievedCurrency).FirstOrDefaultAsync(a=>a.ID == id);

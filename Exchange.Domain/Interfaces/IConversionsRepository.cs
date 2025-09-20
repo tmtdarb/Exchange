@@ -12,6 +12,7 @@ namespace Exchange.Domain.Interfaces
         Task AddConversion(Conversion model);
         Task<List<Conversion>> GetAllConversions();
         Task<List<Conversion>> GetAllConversionsByDate(DateTime from, DateTime to);
+        Task<List<Conversion>> GetAllSuspiciousConversions(DateTime from, DateTime to);
         Task<Conversion> GetConversionByID(int id);
         Task SaveChanges();
     }

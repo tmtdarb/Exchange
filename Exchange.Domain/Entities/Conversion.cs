@@ -16,6 +16,7 @@ namespace Exchange.Domain.Entities
         public decimal AmountToBuy { get; set; }
         public decimal AmountToSell { get; set; }
         // conversion done
+        public decimal AmountToSellInGel { get; set; }
         public DateTimeOffset ConversionDate { get; set; }
         public string Comment { get; set; }
 

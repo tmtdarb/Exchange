@@ -56,6 +56,7 @@ namespace Exchange.Application.CQRS.Conversions.Commands
             model.SoldCurrencyID =soldCurrency.ID;
             model.RecievedCurrencyID = recievedCurrency.ID;
             model.ConversionDate = DateTimeOffset.Now;
+            model.AmountToSellInGel = sellAmountInGel;
             await _conversionRepository.AddConversion(model);
             await _conversionRepository.SaveChanges();
             return _mapper.Map<ConversionModel>(model);
